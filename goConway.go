@@ -14,7 +14,7 @@ func clearScreen() {
 }
 
 func cursorTopLeft() {
-    fmt.Print("\033[H")
+	fmt.Print("\033[H")
 }
 
 func countNeighbour(world *[100][100]string, i int, j int) (int, int) {
@@ -94,7 +94,7 @@ func generateWorld(world *[100][100]string) {
 		for j := 0; j < 100; j++ {
 			if rand.Intn(5) == 4 {
 				world[i][j] = "#"
-            }
+			}
 		}
 	}
 }
@@ -135,33 +135,26 @@ func printWorld(world *[100][100]string) {
 	for i := 0; i < 100; i++ {
 		for j := 0; j < 100; j++ {
 			//fmt.Printf("Hello \n");
-            if world[i][j] == "" {
-                fmt.Printf(" ")
-            } else {
-                fmt.Printf("%s", world[i][j])
-            }
+			if world[i][j] == "" {
+				fmt.Printf(" ")
+			} else {
+				fmt.Printf("%s", world[i][j])
+			}
 		}
 		fmt.Printf("\n")
 	}
 }
 
-//func main() {
-//	world := [100][100]string{}
-//    generateWorld(&world)
-//        printWorld(&world)
-//}
 
 func main() {
-    cursorTopLeft()
-    clearScreen()
+	cursorTopLeft()
+	clearScreen()
 	world := [100][100]string{}
 	generateWorld(&world)
 	for i := 0; i < 5000; i++ {
-        //cursorTopLeft()
-        clearScreen()
+		clearScreen()
 		printWorld(&world)
-		//clrscr()
-        time.Sleep(24 * time.Millisecond)
-        updateWorldState(&world)
+		time.Sleep(24 * time.Millisecond)
+		updateWorldState(&world)
 	}
 }
